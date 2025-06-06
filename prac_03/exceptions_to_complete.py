@@ -7,7 +7,7 @@ is_finished = False
 while not is_finished:
     try:
         result = int(input("Enter a valid integer: "))
-        is_finished = True  # TODO: This line ensures the loop will exit when a valid integer is entered.
-    except ValueError:  # TODO - Catch the ValueError exception that occurs when the input is not an integer.
+        is_finished = True
+    except ValueError:
         print("Please enter a valid integer.")
 print("Valid result is:", result)
