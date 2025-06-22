@@ -21,4 +21,8 @@ def main():
     for champion, count in sorted(champion_to_count.items()):
         print(f"{champion} {count}")
 
+    countries = sorted({country for _, country in champions})
+    print(f"\nThese {len(countries)} countries have won Wimbledon:")
+    print(", ".join(countries))
+
 main()
