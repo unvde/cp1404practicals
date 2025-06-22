@@ -9,5 +9,7 @@ for word in words:
     else:
         word_to_count[word] = 1
 
+max_length = max(len(word) for word in word_to_count)
+
 for word, count in sorted(word_to_count.items()):
-    print(f"{word} : {count}")
+    print(f"{word:{max_length}} : {count}")
