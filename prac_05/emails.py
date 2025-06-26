@@ -1,9 +1,10 @@
-def extract_name(email):
-    name_part = email.split('@')[0]
-    name = name_part.replace('.', ' ').title()
-    return name
+"""
+CP1404/CP5632 Practical
+Get emails, map to names, print formatted result
+"""
 
 def main():
+    #Prompt user for emails and print formatted name-email pairs
     email_to_name = {}
     email = input("Email: ")
     while email != "":
@@ -17,4 +18,13 @@ def main():
     for email, name in email_to_name.items():
         print(f"{name} ({email})")
 
-main()
+
+def extract_name(email):
+    #Extract name from email address using the part before '@'
+    name_part = email.split('@')[0]
+    name = name_part.replace('.', ' ').title()
+    return name
+
+
+if __name__ == '__main__':
+    main()
