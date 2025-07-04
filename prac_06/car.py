@@ -4,6 +4,7 @@ car.py
 Car class - stores fuel, name, and allows driving simulation.
 """
 
+
 class Car:
     """Represent a Car object."""
 
@@ -19,7 +20,7 @@ class Car:
 
     def __str__(self):
         """Return string representation of car."""
-        return f"fuel={self.fuel}, odometer={self._odometer}"
+        return f"{self.name}, fuel={self.fuel}, odometer={self._odometer}"
 
     def add_fuel(self, amount):
         """Add amount to the car's fuel."""
