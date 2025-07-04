@@ -1,16 +1,25 @@
-"""CP1404/CP5632 Practical - Car class example."""
-
+"""
+CP1404/CP5632 Practical
+car.py
+Car class - stores fuel, name, and allows driving simulation.
+"""
 
 class Car:
     """Represent a Car object."""
 
-    def __init__(self, fuel=0):
+    def __init__(self, name="", fuel=0):
         """Initialise a Car instance.
 
+        name: str, car name
         fuel: float, one unit of fuel drives one kilometre
         """
+        self.name = name
         self.fuel = fuel
         self._odometer = 0
+
+    def __str__(self):
+        """Return string representation of car."""
+        return f"fuel={self.fuel}, odometer={self._odometer}"
 
     def add_fuel(self, amount):
         """Add amount to the car's fuel."""
