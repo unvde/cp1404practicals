@@ -19,5 +19,6 @@ def main():
     print(f"Limo has fuel: {limo.fuel}")
     distance_driven = limo.drive(115)
     print(f"Limo drove {distance_driven}km")
+    print(limo)
 
 main()
