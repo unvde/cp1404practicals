@@ -23,3 +23,7 @@ class Guitar:
     def is_vintage(self):
         """Return True if the guitar is 50 or more years old."""
         return self.get_age() >= 50
+
+    def __str__(self):
+        """Return string representation of the guitar."""
+        return f"{self.name} ({self.year}) : ${self.cost:,.2f}"
