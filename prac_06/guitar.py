@@ -4,6 +4,7 @@ guitar.py
 Class for representing a guitar and its properties.
 """
 
+from datetime import date
 
 class Guitar:
     """Represent a Guitar object."""
@@ -13,3 +14,8 @@ class Guitar:
         self.name = name
         self.year = year
         self.cost = cost
+
+    def get_age(self):
+        """Return the age of the guitar in years."""
+        current_year = date.today().year
+        return current_year - self.year
