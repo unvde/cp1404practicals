@@ -58,6 +58,15 @@ def add_new_projects():
     return new_projects
 
 
+def save_projects(filename, projects):
+    """Save a list of Project objects to a file."""
+    with open(filename, "w") as out_file:
+        print("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage", file=out_file)
+        for project in projects:
+            print(f"{project.name}\t{project.start_date}\t{project.priority}"
+                  f"\t{project.cost_estimate}\t{project.completion_percentage}", file=out_file)
+
+
 def main():
     """Main entry point of the project management program."""
     filename = "projects.txt"
@@ -70,6 +79,8 @@ def main():
         projects.extend(new_projects)
         print("\nNew projects added.")
         display_projects(projects)
+        save_projects(filename, projects)
+        print(f"\nProjects saved to {filename}.")
 
 
 if __name__ == '__main__':
