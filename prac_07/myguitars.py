@@ -22,6 +22,30 @@ def load_guitars():
     return guitars
 
 
+def display_guitars(guitars, title):
+    """Display a list of guitars with a given title."""
+    print(f"\n{title}")
+    for i, guitar in enumerate(guitars, 1):
+        print(f"{i}. {guitar}")
+
+
+def get_new_guitars():
+    """Get new guitars from user input."""
+    new_guitars = []
+    print("\nAdd new guitars (leave name empty to finish):")
+    while True:
+        name = input("Name: ")
+        if not name:
+            break
+        try:
+            year = int(input("Year: "))
+            cost = float(input("Cost: $"))
+            new_guitars.append(Guitar(name, year, cost))
+        except ValueError:
+            print("Invalid input. Skipping this entry.")
+    return new_guitars
+
+
 def save_guitars(guitars, filename):
     """Save list of Guitar objects to a CSV file."""
     with open(filename, "w") as out_file:
@@ -32,32 +56,14 @@ def save_guitars(guitars, filename):
 def main():
     """Start the guitar program."""
     guitars = load_guitars()
+    display_guitars(guitars, "These are the guitars:")
 
-    print("These are the guitars:")
-    for i, guitar in enumerate(guitars, 1):
-        print(f"{i}. {guitar}")
-
-    # Sort and display
     guitars.sort()
-    print("\nThese are the guitars sorted by year:")
-    for i, guitar in enumerate(guitars, 1):
-        print(f"{i}. {guitar}")
+    display_guitars(guitars, "These are the guitars sorted by year:")
 
-    # Add new guitars
-    print("\nAdd new guitars (leave name empty to finish):")
-    while True:
-        name = input("Name: ")
-        if not name:
-            break
-        try:
-            year = int(input("Year: "))
-            cost = float(input("Cost: $"))
-        except ValueError:
-            print("Invalid input. Skipping this entry.")
-            continue
-        guitars.append(Guitar(name, year, cost))
+    new_guitars = get_new_guitars()
+    guitars.extend(new_guitars)
 
-    # Save all guitars to file
     save_guitars(guitars, FILENAME)
     print(f"\n{len(guitars)} guitars saved to {FILENAME}")
 
