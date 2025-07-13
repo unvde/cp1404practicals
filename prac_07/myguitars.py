@@ -28,6 +28,13 @@ def main():
     for i, guitar in enumerate(guitars, 1):
         print(f"{i}. {guitar}")
 
+    # Sort and display
+    guitars.sort()
+    print("\nThese are the guitars sorted by year:")
+    for i, guitar in enumerate(guitars, 1):
+        print(f"{i}. {guitar}")
+
+
 
 if __name__ == '__main__':
     main()
