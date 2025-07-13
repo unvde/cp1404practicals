@@ -21,6 +21,14 @@ def load_guitars():
             guitars.append(Guitar(name, year, cost))
     return guitars
 
+
+def save_guitars(guitars, filename):
+    """Save list of Guitar objects to a CSV file."""
+    with open(filename, "w") as out_file:
+        for guitar in guitars:
+            print(f"{guitar.name},{guitar.year},{guitar.cost}", file=out_file)
+
+
 def main():
     """Start the guitar program."""
     guitars = load_guitars()
@@ -48,6 +56,10 @@ def main():
             print("Invalid input. Skipping this entry.")
             continue
         guitars.append(Guitar(name, year, cost))
+
+    # Save all guitars to file
+    save_guitars(guitars, FILENAME)
+    print(f"\n{len(guitars)} guitars saved to {FILENAME}")
 
 
 if __name__ == '__main__':
