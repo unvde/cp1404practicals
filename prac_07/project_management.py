@@ -38,12 +38,38 @@ def display_projects(projects):
         print(f"  {project}")
 
 
+def add_new_projects():
+    """Prompt user to enter new projects, return as list of Project objects."""
+    new_projects = []
+    print("\nAdd new projects (leave name empty to finish):")
+    while True:
+        name = input("Name: ")
+        if not name:
+            break
+        start_date = input("Start date (dd/mm/yyyy): ")
+        try:
+            priority = int(input("Priority: "))
+            cost_estimate = float(input("Cost estimate: $"))
+            completion_percentage = int(input("Percent complete: "))
+            new_project = Project(name, start_date, priority, cost_estimate, completion_percentage)
+            new_projects.append(new_project)
+        except ValueError:
+            print("Invalid input. Skipping this entry.")
+    return new_projects
+
+
 def main():
     """Main entry point of the project management program."""
     filename = "projects.txt"
     projects = load_projects(filename)
     print("Projects loaded.\n")
     display_projects(projects)
+
+    new_projects = add_new_projects()
+    if new_projects:
+        projects.extend(new_projects)
+        print("\nNew projects added.")
+        display_projects(projects)
 
 
 if __name__ == '__main__':
