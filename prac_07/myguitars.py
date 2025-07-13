@@ -1,12 +1,13 @@
 """
 CP1404/CP5632 Practical
 myguitars.py
-Read guitars from file and store as Guitar objects.
+Read guitars from file, display, sort, add, and store Guitar objects.
 """
 
 from guitar import Guitar
 
 FILENAME = "guitars.csv"
+
 
 def load_guitars():
     """Load guitars from a CSV file into a list of Guitar objects."""
@@ -34,6 +35,19 @@ def main():
     for i, guitar in enumerate(guitars, 1):
         print(f"{i}. {guitar}")
 
+    # Add new guitars
+    print("\nAdd new guitars (leave name empty to finish):")
+    while True:
+        name = input("Name: ")
+        if not name:
+            break
+        try:
+            year = int(input("Year: "))
+            cost = float(input("Cost: $"))
+        except ValueError:
+            print("Invalid input. Skipping this entry.")
+            continue
+        guitars.append(Guitar(name, year, cost))
 
 
 if __name__ == '__main__':
