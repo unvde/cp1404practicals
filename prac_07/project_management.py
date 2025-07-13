@@ -24,13 +24,26 @@ def load_projects(filename):
     return projects
 
 
+def display_projects(projects):
+    """Display incomplete and complete projects, sorted by priority."""
+    incomplete = [p for p in projects if not p.is_complete()]
+    complete = [p for p in projects if p.is_complete()]
+
+    print("Incomplete projects:")
+    for project in sorted(incomplete):
+        print(f"  {project}")
+
+    print("Complete projects:")
+    for project in sorted(complete):
+        print(f"  {project}")
+
+
 def main():
     """Main entry point of the project management program."""
     filename = "projects.txt"
     projects = load_projects(filename)
-    print("Loaded projects:")
-    for project in projects:
-        print(project)
+    print("Projects loaded.\n")
+    display_projects(projects)
 
 
 if __name__ == '__main__':
