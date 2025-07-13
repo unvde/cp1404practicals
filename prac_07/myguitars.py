@@ -21,8 +21,13 @@ def load_guitars():
     return guitars
 
 def main():
-    """Start the guitar program (placeholder main)."""
+    """Start the guitar program."""
     guitars = load_guitars()
+
+    print("These are the guitars:")
+    for i, guitar in enumerate(guitars, 1):
+        print(f"{i}. {guitar}")
+
 
 if __name__ == '__main__':
     main()
