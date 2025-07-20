@@ -12,7 +12,7 @@ class BoxLayoutDemo(App):
         self.root.ids.output_label.text = f"Hello {name}"
 
     def handle_clear(self):
-        pass
-
+        self.root.ids.input_name.text = ""
+        self.root.ids.output_label.text = ""
 
 BoxLayoutDemo().run()
