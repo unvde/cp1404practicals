@@ -8,6 +8,7 @@ BoxLayout:
             id: input_miles
             text: '0'
             multiline: False
+            on_text: app.handle_convert()
 
         BoxLayout:
             orientation: 'vertical'
@@ -21,9 +22,9 @@ BoxLayout:
                 text: "Down"
                 on_press: app.handle_increment(-1)
 
-    Button:
-        text: "Convert"
-        on_press: app.handle_convert()
+#    Button:
+#        text: "Convert"
+#        on_press: app.handle_convert()
 
     Label:
         id: output_label
