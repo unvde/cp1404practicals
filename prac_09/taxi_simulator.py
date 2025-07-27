@@ -6,7 +6,6 @@ Taxi simulator program using Taxi and SilverServiceTaxi classes.
 from taxi import Taxi
 from silver_service_taxi import SilverServiceTaxi
 
-
 def main():
     """Run the taxi simulator."""
     taxis = [
@@ -41,7 +40,6 @@ def main():
     print("Taxis are now:")
     display_taxis(taxis)
 
-
 def choose_taxi(taxis):
     """Display list of taxis and allow user to choose one."""
     print("Taxis available:")
@@ -49,30 +47,31 @@ def choose_taxi(taxis):
         print(f"{i} - {taxi}")
     try:
         choice = int(input("Choose taxi: "))
-        return taxis[choice]
-    except (ValueError, IndexError):
-        print("Invalid taxi choice")
-        return None
-
+        if 0 <= choice < len(taxis):
+            return taxis[choice]
+        else:
+            print("Invalid taxi choice")
+    except ValueError:
+        print("Invalid input; enter a number")
+    return None
 
 def drive_taxi(taxi):
     """Start a new fare and drive user-defined distance. Return trip cost."""
     taxi.start_fare()
     try:
         distance = float(input("Drive how far? "))
-        taxi.drive(distance)
+        actual_distance = taxi.drive(distance)
         trip_cost = taxi.get_fare()
+        print(f"{taxi.name} drove {actual_distance:.1f}km")
         print(f"Your {taxi.name} trip cost you ${trip_cost:.2f}")
         return trip_cost
     except ValueError:
-        print("Invalid input")
+        print("Invalid input; must be a number")
         return 0.0
-
 
 def display_taxis(taxis):
     """Display the current state of all taxis."""
     for i, taxi in enumerate(taxis):
         print(f"{i} - {taxi}")
-
 
 main()
