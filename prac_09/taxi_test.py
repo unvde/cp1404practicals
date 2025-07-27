@@ -4,7 +4,7 @@ Test program for the Taxi class.
 Tests Taxi functionality including driving, fare calculation and fare reset.
 """
 
-from prac_09.taxi import Taxi
+from taxi import Taxi
 
 def create_taxi():
     """Create a Taxi object with name 'Prius 1' and 100 units of fuel."""

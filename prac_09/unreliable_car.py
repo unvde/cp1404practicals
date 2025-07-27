@@ -4,7 +4,7 @@ UnreliableCar is-a Car but may not always drive.
 """
 
 import random
-from prac_09.car import Car
+from car import Car
 
 class UnreliableCar(Car):
     """Represent a car that has a reliability rating affecting drive success."""
